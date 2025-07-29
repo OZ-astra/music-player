@@ -244,6 +244,15 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      <p className="mt-5 text-[0.65rem]">
+        coded by{" "}
+        <a
+          className="text-blue-300"
+          href="https://github.com/OZ-astra/landin-page-with-dropDown"
+        >
+          Ozil
+        </a>
+      </p>
     </div>
   );
 }
