@@ -44,7 +44,7 @@ export default function Homepage() {
   ];
   return (
     <div className="w-full h-full relative z-1">
-      <header className="flex align-middle justify-between md:justify-normal md:gap-[5px] mt-5 px-4 md:w-[100%]">
+      <header className="flex align-middle justify-between md:justify-normal md:gap-5 mt-5 px-4 md:w-[100%]">
         <h1 className="text-4xl md:w-[15%]">snap</h1>
         <div>
           {!hide && isSmallScreen ? (
@@ -244,7 +244,11 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+<<<<<<< HEAD
       <p className="mt-5 text-[0.67rem]">
+=======
+      <p className="mt-5 text-[0.65rem]">
+>>>>>>> e877367 (Removed product-lists folder from repo)
         coded by{" "}
         <a
           className="text-blue-300"
