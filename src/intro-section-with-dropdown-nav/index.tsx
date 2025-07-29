@@ -57,7 +57,7 @@ export default function Homepage() {
             </button>
           ) : (
             <div
-              className={`bg-white absolute -mt-5 z-2 inset-0 left-36 md:w-[80vw] ${
+              className={`bg-white absolute -mt-5 z-2 inset-0 left-36 md:left-0 md:w-[80vw] ${
                 isSmallScreen ? "" : "relative left-0 mt-0"
               }`}
             >
@@ -244,7 +244,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-      <p className="mt-5 text-[0.65rem]">
+      <p className="mt-5 text-[0.67rem]">
         coded by{" "}
         <a
           className="text-blue-300"
