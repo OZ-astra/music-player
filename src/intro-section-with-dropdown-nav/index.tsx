@@ -244,11 +244,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-<<<<<<< HEAD
       <p className="mt-5 text-[0.67rem]">
-=======
-      <p className="mt-5 text-[0.65rem]">
->>>>>>> e877367 (Removed product-lists folder from repo)
         coded by{" "}
         <a
           className="text-blue-300"
