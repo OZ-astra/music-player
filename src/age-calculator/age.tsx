@@ -185,7 +185,7 @@ export default function AgeCalculator() {
         </div>
       </form>
 
-      <section className="mt-16 mb-12 font-bold italic leading-[4rem] text-[4.3rem] md:text[5rem]">
+      <section className="w-full mt-16 mb-12 font-bold italic leading-[4rem] text-[4rem] md:text[5rem]">
         <div>
           <span>{submitted ? result.years : "--"}</span> years
         </div>
