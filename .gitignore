@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 
 README.md
+public/advice-images
 public/age-assets/
 public/assets/
 public/form-assests/

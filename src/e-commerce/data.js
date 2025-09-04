@@ -1,4 +1,5 @@
 const largeImages = [
+  "./commerceAssets/footwear/shoe-1.jpg",
   "./commerceAssets/bags/hangedBags-1.jpg",
   "./commerceAssets/kitchen/juicer-1.jpg",
   "./commerceAssets/kitchen/groupedStanleyCup.jpg",
@@ -8,7 +9,7 @@ const largeImages = [
 const data = [
   {
     bags: [
-      "./commerceAssets/bags/bags-2.jpg",
+      "./commerceAssets/bags/bags-2.jpm  g",
       "./commerceAssets/bags/hangedBags-1.jpg",
       "./commerceAssets/bags/kidsBags.jpg",
     ],
