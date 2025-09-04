@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import AdviceGenerator from "./Advice generator/index";
+import Ecommerce from "./e-commerce/App.jsx";
 
-const root = document.getElementById("root") as HTMLElement;
+const root = document.getElementById("root");
 createRoot(root).render(
   <StrictMode>
-    <AdviceGenerator />
+    <Ecommerce />
   </StrictMode>
 );
