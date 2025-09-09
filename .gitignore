@@ -30,6 +30,7 @@ public/assets/
 public/form-assests/
 public/images/
 public/vite.svg
+public/commerceAssets/
 src/product-lists/
 src/multi-step-form/
 src/testing/
@@ -42,3 +43,4 @@ src/assets/
 src/age-calculator/
 src/Advice generator/
 src/Advice generator/style-guide.md
+src/e-commerce/
