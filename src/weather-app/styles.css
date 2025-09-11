@@ -4,11 +4,14 @@
 body {
   background: hsl(243, 96%, 9%);
   color: hsl(250, 6%, 84%);
-  font-family: "DM Sans";
-  /* background: hsl(243,27%,20%); */
+  font-family: "DM Sans", sans-serif;
 }
 
 p.units {
   font-weight: 300;
   font-size: 0.85rem;
+}
+
+h1.page-description {
+  font-family: "Bricolage Grotesque", sans-serif;
 }
