@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Search from "./search";
 
 type OpenCageResult = {
   formatted: string;
@@ -26,6 +27,9 @@ type OpenCageResponse = {
 
 export default function APIs() {
   const [location, setLocation] = useState<OpenCageResponse | null>(null);
+  const [inputText, setInputText] = useState("");
+  const [inputError, setInputError] = useState("");
+
   useEffect(() => {
     async function handleLocation() {
       try {
@@ -51,18 +55,46 @@ export default function APIs() {
     handleLocation();
   }, []);
 
+  async function handleSearch(input: string) {
+    try {
+      const searchResponse = await fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
+          input
+        )}&key=7fd3a302e7304986853c8cca83bd51be`
+      );
+      const searchData = await searchResponse.json();
+      const formatted = searchData.results[0].formatted;
+      const { lat, lng } = searchData.results[0].geometry;
+      setInputText(formatted);
+    } catch (error) {
+      console.error("something went wrong with searchData");
+      if (error instanceof Error) {
+        setInputError(error.message);
+      } else {
+        setInputError(String(error));
+      }
+    }
+  }
+
   const currentDate = new Date();
   console.log(currentDate);
 
   return (
     <div>
+      <Search onSearch={handleSearch} text={inputText} />
       <div className="bg-[url('./weather-assets/images/bg-today-small.svg')] bg-no-repeat w-full h-[100vh] my-8">
         {location && (
           <div className="pt-10">
-            <p className="text-center text-[1.8rem] text-white font-[700]">
-              <span>{location.results[0].components.city}, </span>
-              <span>{location.results[0].components.country}</span>
-            </p>
+            <div className="text-center text-[1.8rem] text-white font-[700]">
+              {inputText === "" ? (
+                <p>
+                  <span>{location.results[0].components.city}, </span>
+                  <span>{location.results[0].components.country}</span>
+                </p>
+              ) : (
+                <span>{inputText}</span>
+              )}
+            </div>
             <p className="text-center mt-2 text-[1rem] font-[500]">
               {currentDate.toLocaleDateString("en-US", {
                 weekday: "long",
