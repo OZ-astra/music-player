@@ -17,10 +17,7 @@ export default function WeatherApp() {
           <img src="./weather-assets/images/logo.svg" className="w-36" />
         </div>
         <button
-          onClick={() => {
-            handleDropdown();
-            console.log(dropdown);
-          }}
+          onClick={() => handleDropdown()}
           className="flex w-24 justify-between px-2 py-2 rounded-lg bg-[hsl(243,27%,20%)]"
         >
           <img

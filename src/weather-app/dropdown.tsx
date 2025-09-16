@@ -35,7 +35,7 @@ export default function Dropdown() {
   }
 
   return (
-    <div className="">
+    <div className="absolute z-10">
       <div className=" w-[210px] bg-[hsl(243,27%,20%)] px-2 mx-3 rounded-lg border border-[hsl(252,17%,35%)]">
         <div className="font-[300] pt-3">
           <h6 className="text-white text-[1rem]">
