@@ -12,6 +12,31 @@ p.units {
   font-size: 0.85rem;
 }
 
-h1.page-description {
+h1.page-description,
+.temp {
   font-family: "Bricolage Grotesque", sans-serif;
 }
+
+.temp-grid div {
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 2rem;
+  background-color: hsl(243, 27%, 20%);
+}
+
+.temp-grid div p:nth-child(1) {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: hsl(240, 6%, 70%);
+}
+
+.temp-grid div p:nth-child(2) {
+  font-weight: 300;
+  font-size: 1.9rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+/* form li:hover {
+  border: 2px solid red;
+} */

@@ -6,10 +6,20 @@ import { useState } from "react";
 
 export default function WeatherApp() {
   const [dropdown, setDropdown] = useState(false);
+  const [activeUnit, setActiveUnit] = useState(() => {
+    const savedUnit = localStorage.getItem("activeUnit");
+    return savedUnit ? savedUnit : "celsius";
+  });
+  const [dayDropdown, setDayDropdown] = useState(false);
 
   function handleDropdown() {
     setDropdown((prev) => !prev);
   }
+
+  function handleDayDropdown() {
+    setDayDropdown((prev) => !prev);
+  }
+
   return (
     <div className="px-3">
       <header className="mt-4 flex justify-between">
@@ -33,11 +43,16 @@ export default function WeatherApp() {
           />
         </button>
       </header>
-      {dropdown && (
-        <div className="flex justify-end mt-2">
-          <Dropdown />
-        </div>
-      )}
+
+      <div className="flex justify-end mt-2">
+        <Dropdown
+          activeUnit={activeUnit}
+          setActiveUnit={setActiveUnit}
+          dropdown={dropdown}
+          dayDropdown={dayDropdown}
+          handleDropdown={handleDropdown}
+        />
+      </div>
       <div className="mt-10">
         <h1 className=" page-description text-center text-[3.5rem] leading-none text-white font-700 ">
           How's the sky looking today?
@@ -45,7 +60,12 @@ export default function WeatherApp() {
       </div>
 
       <div>
-        <APIs />
+        <APIs
+          activeUnit={activeUnit}
+          setActiveUnit={setActiveUnit}
+          dropdown={dropdown}
+          handleDayDropdown={handleDayDropdown}
+        />
       </div>
     </div>
   );
