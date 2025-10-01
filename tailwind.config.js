@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        sm: { max: "767px" },
-        md: { min: "768px" },
+        sm: { max: "639px" },
+        md: { min: "640px" },
         lg: { min: "1024px" },
       },
       fontFamily: {

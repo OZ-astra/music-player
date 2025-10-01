@@ -1,10 +1,38 @@
 import { useState } from "react";
+
+type OpenCageResult = {
+  formatted: string;
+  components: {
+    city?: string;
+    state?: string;
+    country?: string;
+    country_code?: string;
+    [key: string]: any;
+  };
+  geometry: {
+    lat: number;
+    lng: number;
+  };
+};
+
+type OpenCageResponse = {
+  results: OpenCageResult[];
+  status: {
+    code: number;
+    message: string;
+  };
+  total_results: number;
+};
+
 type searchProps = {
   onSearch: (query: string) => void;
   onSelect: (value: string) => void;
   text: string;
   filtered: string[];
   setFiltered: React.Dispatch<React.SetStateAction<string[]>>;
+  location: OpenCageResponse | null;
+  inputText: string;
+  setSearchFound: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export default function Search({
   onSearch,
@@ -12,9 +40,11 @@ export default function Search({
   text,
   filtered,
   setFiltered,
+  location,
+  inputText,
+  setSearchFound,
 }: searchProps) {
   const [input, setInput] = useState(text);
-  const [selected, setSelected] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -53,7 +83,13 @@ export default function Search({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmedInput = input.trim();
+    setInput("");
     if (!trimmedInput) return;
+    if (location?.results[0].formatted !== inputText) {
+      setSearchFound(false);
+    } else {
+      setSearchFound(true);
+    }
 
     if (activeIndex >= 0) {
       setInput(filtered[activeIndex]);
@@ -65,26 +101,34 @@ export default function Search({
   }
 
   const isOpen = filtered.length > 0;
+  console.log("location:", location);
+  console.log("inputText:", inputText);
 
   return (
     <form onSubmit={handleSubmit} className="mt-12 relative">
-      <div className="w-full flex px-4 bg-[hsl(243,27%,20%)] py-3 rounded-lg ">
-        <img src="./weather-assets/images/icon-search.svg" alt="search" />
-        <input
-          type="text"
-          placeholder="Search for a place..."
-          value={input ?? ""}
-          onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          className="w-full font-300 ml-3 text-[1.3rem] bg-[hsl(243,27%,20%)] outline-none "
-        />
+      <div className="md:flex md:w-[70vw] md:mx-auto md:gap-4 items-center">
+        <div className="focus w-full md:py-[0.6rem] md:w-[70%] flex px-4 bg-[hsl(243,27%,20%)] py-3 rounded-lg ">
+          <img
+            src="./weather-assets/images/icon-search.svg"
+            alt="search"
+            className="md:w-4"
+          />
+          <input
+            type="text"
+            placeholder="Search for a place..."
+            value={input ?? ""}
+            onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            className="w-full font-300 ml-3 text-[1.3rem] md:text-[0.9rem] bg-[hsl(243,27%,20%)] outline-none "
+          />
+        </div>
+        <button
+          type="submit"
+          className="focus md:w-[20%] hover:bg-[hsl(248,70%,36%)] w-full py-3 md:py-[0.5rem] mt-2 rounded-lg font-300 text-[1.2rem] md:text-[1rem] bg-[hsl(233,67%,56%)]"
+        >
+          Search
+        </button>
       </div>
-      <button
-        type="submit"
-        className="w-full py-3 mt-2 rounded-lg font-300 text-[1.2rem] bg-[hsl(233,67%,56%)]"
-      >
-        Search
-      </button>
 
       {isOpen && (
         <ul
@@ -114,8 +158,6 @@ export default function Search({
             : ""}
         </ul>
       )}
-
-      {selected && <p>You selected: {selected}</p>}
     </form>
   );
 }

@@ -5,10 +5,17 @@ import "./styles.css";
 import { useState } from "react";
 
 export default function WeatherApp() {
+  const [apiError, setApiError] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [searchFound, setSearchFound] = useState(true);
+
   const [activeUnit, setActiveUnit] = useState(() => {
     const savedUnit = localStorage.getItem("activeUnit");
     return savedUnit ? savedUnit : "celsius";
+  });
+  const [speedUnit, setSpeedUnit] = useState(() => {
+    const savedSpeedUnit = localStorage.getItem("speedUnit");
+    return savedSpeedUnit ? savedSpeedUnit : "km/h";
   });
   const [dayDropdown, setDayDropdown] = useState(false);
 
@@ -48,25 +55,58 @@ export default function WeatherApp() {
         <Dropdown
           activeUnit={activeUnit}
           setActiveUnit={setActiveUnit}
+          speedUnit={speedUnit}
+          setSpeedUnit={setSpeedUnit}
           dropdown={dropdown}
-          dayDropdown={dayDropdown}
           handleDropdown={handleDropdown}
         />
       </div>
-      <div className="mt-10">
-        <h1 className=" page-description text-center text-[3.5rem] leading-none text-white font-700 ">
-          How's the sky looking today?
-        </h1>
-      </div>
+      {apiError === false ? (
+        <div>
+          <div className="mt-10">
+            <h1 className="md:text-[2.7rem] page-description text-center text-[3.5rem] leading-none text-white font-700 ">
+              How's the sky looking today?
+            </h1>
+          </div>
 
-      <div>
-        <APIs
-          activeUnit={activeUnit}
-          setActiveUnit={setActiveUnit}
-          dropdown={dropdown}
-          handleDayDropdown={handleDayDropdown}
-        />
-      </div>
+          <div>
+            <APIs
+              setApiError={setApiError}
+              activeUnit={activeUnit}
+              setActiveUnit={setActiveUnit}
+              speedUnit={speedUnit}
+              dropdown={dropdown}
+              dayDropdown={dayDropdown}
+              handleDayDropdown={handleDayDropdown}
+              setSearchFound={setSearchFound}
+              searchFound={searchFound}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="mt-16">
+          <img
+            src="./weather-assets/images/icon-error.svg"
+            alt="api error"
+            className="w-8 mx-auto"
+          />
+          <h1 className="api-error font-700 text-[1.8rem] text-center mt-4 text-white">
+            Something Went Wrong
+          </h1>
+          <p className="text-center text-[1.2rem] font-500 mt-3 ">
+            We couldn't connect to the server(API error). Please try again in a
+            few moments.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-4 py-2 text-white rounded-lg flex gap-2 mx-auto bg-[hsl(243,27%,20%)]"
+          >
+            <img src="weather-assets/images/icon-retry.svg" alt="retry" />{" "}
+            <span>Retry</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
