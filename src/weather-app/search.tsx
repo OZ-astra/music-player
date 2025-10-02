@@ -101,13 +101,11 @@ export default function Search({
   }
 
   const isOpen = filtered.length > 0;
-  console.log("location:", location);
-  console.log("inputText:", inputText);
 
   return (
     <form onSubmit={handleSubmit} className="mt-12 relative">
-      <div className="md:flex md:w-[70vw] md:mx-auto md:gap-4 items-center">
-        <div className="focus w-full md:py-[0.6rem] md:w-[70%] flex px-4 bg-[hsl(243,27%,20%)] py-3 rounded-lg ">
+      <div className="md:flex md:w-[600px] md:mx-auto md:gap-4 items-center  ">
+        <div className="focus-within:outline outline-white outline-offset-4 w-full md:py-[1rem] lg:py-[1.2rem] md:w-[70%] flex px-4 bg-[hsl(243,27%,20%)] py-3 rounded-lg ">
           <img
             src="./weather-assets/images/icon-search.svg"
             alt="search"
@@ -124,7 +122,7 @@ export default function Search({
         </div>
         <button
           type="submit"
-          className="focus md:w-[20%] hover:bg-[hsl(248,70%,36%)] w-full py-3 md:py-[0.5rem] mt-2 rounded-lg font-300 text-[1.2rem] md:text-[1rem] bg-[hsl(233,67%,56%)]"
+          className="md:w-[20%] w-full py-3 md:py-[1rem] mt-2 rounded-lg font-300 text-[1.2rem] md:text-[1rem] focus:outline outline-[hsl(233,67%,56%)] outline-offset-2 bg-[hsl(233,67%,56%)]"
         >
           Search
         </button>

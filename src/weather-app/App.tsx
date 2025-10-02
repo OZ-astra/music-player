@@ -35,7 +35,7 @@ export default function WeatherApp() {
         </div>
         <button
           onClick={() => handleDropdown()}
-          className="flex w-24 justify-between px-2 py-2 rounded-lg bg-[hsl(243,27%,20%)]"
+          className="focus:border-2 flex w-24 justify-between px-2 py-2 rounded-lg bg-[hsl(243,27%,20%)]"
         >
           <img
             src="./weather-assets/images/icon-units.svg"
