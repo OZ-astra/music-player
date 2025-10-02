@@ -264,7 +264,7 @@ export default function APIs({
                 </div>
               ) : (
                 location && (
-                  <div className=" h-auto bg-[url('/weather-assets/images/bg-today-small.svg')] md:bg-[url('./weather-assets/images/bg-today-large.svg')] bg-center bg-no-repeat w-86 bg-cover rounded-lg mt-8">
+                  <div className=" h-auto bg-[url('/weather-assets/images/bg-today-small.svg')] md:bg-[url('/weather-assets/images/bg-today-large.svg')] bg-center bg-no-repeat w-86 bg-cover rounded-lg mt-8">
                     <div className="pt-8">
                       <div className="text-center text-[1.8rem] text-white font-[700] leading-[1.1]">
                         {inputText === "" ? (
