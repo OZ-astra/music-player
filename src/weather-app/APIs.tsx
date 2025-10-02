@@ -265,37 +265,40 @@ export default function APIs({
               ) : (
                 location && (
                   <div className=" h-auto bg-[url('/weather-assets/images/bg-today-small.svg')] md:bg-[url('/weather-assets/images/bg-today-large.svg')] bg-center bg-no-repeat w-86 bg-cover rounded-lg mt-8">
-                    <div className="pt-8">
-                      <div className="text-center text-[1.8rem] text-white font-[700] leading-[1.1]">
-                        {inputText === "" ? (
-                          <p className="leading-0 py-0">
-                            <span>
-                              {location?.results[0].components.city},{" "}
-                            </span>
-                            <span>
-                              {location?.results[0].components.country}
-                            </span>
-                          </p>
-                        ) : (
-                          <span>{inputText}</span>
-                        )}
+                    <div className="pt-8 md:flex items-center justify-between">
+                      <div className="lg:pl-5 md:pl-3">
+                        <div className="text-center text-[1.8rem] text-white font-[700] leading-[1.1]">
+                          {inputText === "" ? (
+                            <p className="leading-0 py-0">
+                              <span>
+                                {location?.results[0].components.city},{" "}
+                              </span>
+                              <span>
+                                {location?.results[0].components.country}
+                              </span>
+                            </p>
+                          ) : (
+                            <span>{inputText}</span>
+                          )}
+                        </div>
+                        <p className="text-center mt-2 text-[1rem] font-[500]">
+                          {currentDate.toLocaleDateString("en-US", {
+                            weekday: "long",
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </p>
                       </div>
-                      <p className="text-center mt-2 text-[1rem] font-[500]">
-                        {currentDate.toLocaleDateString("en-US", {
-                          weekday: "long",
-                          month: "long",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
-                      </p>
-
                       <div className="flex justify-between px-3 pt-4">
-                        <img
-                          src="./weather-assets/images/icon-sunny.webp"
-                          className="w-32"
-                        />
+                        <div className="w-32 md:w-24 ">
+                          <img
+                            src="./weather-assets/images/icon-sunny.webp"
+                            className=" lg:-ml-14"
+                          />
+                        </div>
                         {weather && (
-                          <p className="temp text-[5rem] pr-8 text-white italic">
+                          <p className="temp text-[5rem] md:text-[4rem] pr-8 text-white italic">
                             {activeUnit === "celsius"
                               ? Math.round(weather.current_weather.temperature)
                               : Math.round(
