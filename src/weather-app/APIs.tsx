@@ -264,7 +264,7 @@ export default function APIs({
                 </div>
               ) : (
                 location && (
-                  <div className=" h-auto bg-[url('./weather-assets/images/bg-today-small.svg')] md:bg-[url('./weather-assets/images/bg-today-large.svg')] bg-center bg-no-repeat w-86 bg-cover rounded-lg mt-8">
+                  <div className=" h-auto bg-[url('/weather-assets/images/bg-today-small.svg')] md:bg-[url('./weather-assets/images/bg-today-large.svg')] bg-center bg-no-repeat w-86 bg-cover rounded-lg mt-8">
                     <div className="pt-8">
                       <div className="text-center text-[1.8rem] text-white font-[700] leading-[1.1]">
                         {inputText === "" ? (
@@ -502,6 +502,8 @@ export default function APIs({
                   <div className="mt-6 flex flex-col gap-4 pb-4 mb-14 md:mb-5">
                     {(() => {
                       if (!weather?.hourly) return;
+                      const now = new Date();
+                      const currentHour = now.getHours();
                       const timing = weather.hourly.time ?? [];
                       const temps = weather.hourly.temperature_2m ?? [];
                       const codes = weather.hourly.weathercode ?? [];
@@ -521,7 +523,14 @@ export default function APIs({
                         {}
                       );
                       const selectedForecast = forecastByDay[toggleDay] ?? [];
-                      const next7 = selectedForecast.slice(0, 7);
+                      const startIndex = selectedForecast.findIndex(
+                        (h) => h.time.getHours() >= currentHour
+                      );
+
+                      const next7 =
+                        startIndex >= 0
+                          ? selectedForecast.slice(startIndex, startIndex + 7)
+                          : selectedForecast.slice(0, 7);
 
                       return next7.map((hour, id) => (
                         <div key={id}>
