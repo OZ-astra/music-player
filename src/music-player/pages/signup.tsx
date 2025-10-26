@@ -25,7 +25,7 @@ export default function signup() {
   const [checked, setChecked] = useState(false);
 
   const navigate = useNavigate();
-  let isValid;
+  let isValid: boolean;
   function handleEmail() {
     if (input.email === "") {
       setEmptyInput((prev) => ({ ...prev, email: true }));
@@ -87,6 +87,7 @@ export default function signup() {
   function handleChecked() {
     if (checked === true) {
       setError((prev) => ({ ...prev, checked: false }));
+      isValid = true;
     } else {
       setError((prev) => ({ ...prev, checked: true }));
       isValid = false;
@@ -98,6 +99,7 @@ export default function signup() {
     handleEmail();
     handlePassword();
     handleConfirmPassword();
+    handleChecked();
     if (isValid === true) {
       navigate("/");
     }
@@ -164,7 +166,11 @@ export default function signup() {
               )}
             </div>
             <div className="w-full">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={(e) => setChecked(e.target.checked)}
+              />
               <span className="text-[#9CA3AF] text-[0.9rem] ml-2">
                 I agree to the{" "}
                 <NavLink to="/" className="text-[#3B82F6]">
@@ -176,6 +182,11 @@ export default function signup() {
                 </NavLink>
               </span>
             </div>
+            {error.checked === true && (
+              <p className="text-red-400 text-[0.7rem] mt-0 mb-3">
+                You must agree before submitting.
+              </p>
+            )}
             <button className="mx-auto py-3 w-full rounded-2xl mt-4 font-700 text-[1.1rem] text-white bg-[#3B82F6]">
               Create Account
             </button>
