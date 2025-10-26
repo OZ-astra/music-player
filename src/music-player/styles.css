@@ -7,6 +7,7 @@ body {
   color: white;
 }
 
+/* landing page */
 .description {
   font-family: "Montserrat", sans-serif;
 }
@@ -60,3 +61,32 @@ body {
     background-color: transparent;
   }
 }
+
+/* InputFields css */
+.input-fields div {
+  border: 1px solid hsl(218, 11%, 65%, 0.2);
+  display: flex;
+  align-items: center;
+  width: 350px;
+  padding: 0.7rem 0.4rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.input-fields label {
+  margin: auto;
+  font-weight: 300;
+}
+
+.input-fields div input {
+  outline: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 0.4rem;
+  background: transparent;
+}
+
+/* .conic {
+  background: radial-gradient(#46142d, #00000a, #070620);
+} */

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { FaMusic, FaPlay, FaHeadphones, FaWifi } from "react-icons/fa";
 export default function HomePage() {
   //   Primary: Deep Purple (#6C63FF) or Electric Blue (#3B82F6)
@@ -17,7 +18,7 @@ export default function HomePage() {
         <div className="flex w-[60%] items-center gap-4 justify-end">
           <p className="font-medium text-[1rem]">Sign In</p>
           <button className="w-fit px-6 bg-[#3B82F6] py-3 rounded-lg text-[0.8rem] font-medium">
-            Get Started
+            <NavLink to="/signup">Get Started</NavLink>
           </button>
         </div>
       </header>
