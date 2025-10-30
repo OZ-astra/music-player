@@ -16,8 +16,10 @@ export default function HomePage() {
           <h1 className=" text-[1rem] font-bold text-white">Waveform</h1>
         </div>
         <div className="flex w-[60%] items-center gap-4 justify-end">
-          <p className="font-medium text-[1rem]">Sign In</p>
-          <button className="w-fit px-6 bg-[#3B82F6] py-3 rounded-lg text-[0.8rem] font-medium">
+          <button className="font-medium text-[1rem]">
+            <NavLink to="/login">Sign In</NavLink>
+          </button>
+          <button className="w-fit px-6 bg-[#3B82F6] shadow-md hover:shadow-[#3B82F6] py-3 rounded-lg text-[0.8rem] font-medium">
             <NavLink to="/signup">Get Started</NavLink>
           </button>
         </div>
@@ -37,9 +39,11 @@ export default function HomePage() {
         yourself in the ultimate music streaming experience
       </p>
 
-      <button className="flex justify-center items-center mt-8 w-fit px-6 text-[1rem] font-medium mx-auto py-3 rounded-2xl bg-[#3B82F6]">
-        <FaPlay />
-        <span className="ml-2">Start Listening</span>
+      <button className="flex justify-center items-cente</NavLink>r mt-8 w-fit px-6 text-[1rem] font-medium mx-auto py-3 rounded-2xl bg-[#3B82F6]">
+        <NavLink to="/signup">
+          <FaPlay />
+          <span className="ml-2">Start Listening</span>
+        </NavLink>
       </button>
 
       <div className="grid md:grid-cols-3 md:gap-2 gap-4 mt-8 ">
@@ -85,7 +89,7 @@ export default function HomePage() {
           join millions of music lovers worldwide
         </p>
         <button className="mb-[8rem] bg-white text-[#2f2c6d] mt-9 border w-fit px-4 mx-auto py-3 font-medium text-[1.3rem] rounded-2xl">
-          Create Free Account
+          <NavLink to="/signup">Create Free Account</NavLink>
         </button>
       </div>
       <footer className="border-t-[1px] border-#9ca3af text-center text-[#9ca3af] p-7">
