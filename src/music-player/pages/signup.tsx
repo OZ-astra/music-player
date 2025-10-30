@@ -67,16 +67,6 @@ function reducerFunction(inputState: stateType, action: Action): stateType {
         },
       };
 
-    // case "SUCCESS":
-    // return {
-    //   ...inputState,
-    //   email: "",
-    //   password:"",
-    //   confirmPassword:"",
-    //   isChecked:"",
-    //   loggedIn: true,
-    // };
-
     default:
       return inputState;
   }
@@ -102,7 +92,6 @@ export default function signup() {
         inputState.email,
         inputState.password
       );
-      console.log(auth?.currentUser?.email);
     } catch (err: unknown) {
       if (!(err instanceof Error)) return;
       console.error(err);
@@ -187,7 +176,7 @@ export default function signup() {
 
     if (isFormValid) {
       console.log("form submitted");
-      navigate("/");
+      navigate("/mainHome", { replace: true });
     }
   }
 
